@@ -10,9 +10,10 @@ end
 gem 'rails', '~> 5.1.4'
 gem 'devise', '~> 4.4', '>= 4.4.1'
 # use bootstrap css framework
-gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
-gem 'sass-rails'
+gem 'twitter-bootstrap-rails'
 gem 'jquery-rails'
+gem 'devise-bootstrap-views'
+gem 'sass-rails'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 
