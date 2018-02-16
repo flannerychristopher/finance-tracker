@@ -30,3 +30,15 @@
  #stock-list {
    padding-top: 30px;
  }
+
+.logout {
+  padding-left: 0;
+}
+
+.nav li a.btn {
+  color: #fff !important;
+}
+
+.alert-wrapper {
+  min-height: 60px;
+}
