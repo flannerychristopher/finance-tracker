@@ -1,6 +1,6 @@
 <h1>My Portfolio</h1>
 
-<h3>Search for Stocks:<h3>
+<h3>Search for Stocks:</h3>
 
 <div id='stock-lookup'>
   <%= form_tag search_stocks_path,  remote: true, 
@@ -15,16 +15,22 @@
                             class: 'form-control search-box input-lg'
         
         %>
-      </div>
+      </div> <!-- col -->
+      
       <div class='col-md-2'>
         <%= button_tag type: :submit, class: 'btn btn-lg btn-success' do %>
           <span class='glyphicon glyphicon-search'></span>
         <% end %>
-      </div>
-    </div>
+      </div> <!-- col -->
+
+    </div> <!-- form-group -->
   <% end %>
-</div>
+</div> <!-- stock-lookup -->
 
 <div id='stock-result'>
   <%= render 'users/result' %>
 </div> 
+
+<div id='stock-list'>
+  <%= render 'stocks/list' %>
+</div>

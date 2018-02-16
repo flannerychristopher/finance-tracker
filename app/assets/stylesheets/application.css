@@ -15,10 +15,18 @@
  *= require_self
  */
 
- .results-block {
-   display: inline-block;
- }
+.results-block {
+  display: inline-block;
+}
 
- .no-padding {
-   padding: 0 !important;
+.no-padding {
+  padding: 0 !important;
+}
+
+#stock-result {
+  height: 150px;
+}
+
+ #stock-list {
+   padding-top: 30px;
  }
