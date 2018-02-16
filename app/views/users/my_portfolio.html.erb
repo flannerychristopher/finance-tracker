@@ -3,7 +3,9 @@
 <h3>Search for Stocks:<h3>
 
 <div id='stock-lookup'>
-  <%= form_tag search_stocks_path, method: :get, id: 'stock-lookup-form' do %>
+  <%= form_tag search_stocks_path,  remote: true, 
+                                    method: :get, 
+                                    id: 'stock-lookup-form' do %>
     <div class='form-group row no-padding text-center col-md-12'>
       <div class='col-md-10'>
         <%= text_field_tag  :stock, 
@@ -23,10 +25,6 @@
   <% end %>
 </div>
 
-<% if @stock %>
-  <div class='well results-block'>
-    <strong>Symbol: </strong><%= @stock.ticker %>
-    <strong>Name: </strong><%= @stock.name %>
-    <strong>Price: </strong><%= @stock.price %>
-  </div>
-<% end %>
+<div id='stock-result'>
+  <%= render 'users/result' %>
+</div> 
