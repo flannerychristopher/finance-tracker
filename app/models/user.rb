@@ -9,6 +9,14 @@ class User < ApplicationRecord
   has_many :user_stocks
   has_many :stocks, through: :user_stocks
 
+  def full_name
+    if (first_name || last_name)
+      "#{first_name} #{last_name}".strip
+    else
+      "anonymous"
+    end
+  end
+
   def stock_already_added?(ticker_symbol)
     stock = Stock.find_by_ticker(ticker_symbol)
     # current_user.stocks.include? stock ? true : false
