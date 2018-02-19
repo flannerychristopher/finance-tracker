@@ -5,7 +5,7 @@
     </div>
   <% end %>
 
-  <% if @users %>
+  <% if @users and @users.size > 0 %>
     <div class='well'>
       <% @users.each do |user| %>
         <div>

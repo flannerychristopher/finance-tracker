@@ -3,9 +3,9 @@
 
     <div class='well'>
     
-      <%= stock.name %>,
-      <br /><%= stock.ticker %>
-      <br /><%= stock.last_price %>
+      <strong>Corporation Name:</strong> <%= stock.name %>,
+      <br /><strong>Ticker Symbol:</strong> <%= stock.ticker %>
+      <br /><strong>Last Closing Price:</strong> <%= stock.last_price %>
 
       <% if @user.id == current_user.id %>
         <%= link_to 'delete', user_stock_path(stock), 
