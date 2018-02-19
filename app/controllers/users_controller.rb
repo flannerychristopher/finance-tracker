@@ -14,8 +14,15 @@ class UsersController < ApplicationController
   end
 
   def search
-    @users = User.search(params[:search_param])
-    render json: @users
+    if params[:search_param].present?
+      @users = User.search(params[:search_param])
+      flash.now[:danger] = 'No results found.' if @users.empty?
+    else
+      flash.now[:danger] = 'You have entered an empty string'
+    end
+    respond_to do |format|
+      format.js { render partial: 'friends/result' }
+    end
   end
 
 end

@@ -1,26 +1,30 @@
-<%= render 'friends/lookup' %>
-
 <h1>My Friends</h1>
 
-<% if @friendships.any? %>
+<div class='row'>
+  <%= render 'friends/lookup' %>
+</div>
 
+<div class='row col-md-12 my-friends-list'>
+  <% if @friendships.any? %>
 
-  <% @friendships.each do |friend| %>
-    <div class='well'>
-      <%= content_tag :div, friend.full_name %>
-      <%= content_tag :div, friend.email %>
-      <%= link_to "view profile", user_path(friend), class: 'btn btn-primary btn-xs' %>
-      <%= link_to 'remove friend',  friendship_path(friend),
-                                    method: :delete,
-                                    data: { confirm: 'Are you sure?'},
-                                    class: 'btn btn-xs btn-danger' 
-      %>
+    <% @friendships.each do |friend| %>
+      <div class='well'>
+        <%= content_tag :div, friend.full_name %>
+        <%= content_tag :div, friend.email %>
+        <%= link_to "view profile", user_path(friend), class: 'btn btn-primary btn-xs' %>
+        <%= link_to 'remove friend',  friendship_path(friend),
+                                      method: :delete,
+                                      data: { confirm: 'Are you sure?'},
+                                      class: 'btn btn-xs btn-danger' 
+        %>
+    <% end %>
+
+  <% else %>
+    
+    <div class='row col-md-12'>
+      <p>No friends yet! Add some!</p>
+    </div>
+
   <% end %>
 
-<% else %>
-  
-  <div class='row col-lg-12'>
-    <p>No friends yet! Add some!</p>
-  </div>
-
-<% end %>
+</div>

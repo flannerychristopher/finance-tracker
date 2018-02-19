@@ -1,28 +1,38 @@
-<div id ='friend-lookup'>
+<div id='friend-lookup'>
+  
+  <h3>Search for Friends</h3>
 
-  <%= form_tag  search_friends_path,
-                remote: true,
-                method: :get,
-                id: 'friend-lookup-form' do %>
+  <div>
 
-    <div class = 'form-group row no-padding text-center col-md-12'>
+    <%= form_tag  search_friends_path,
+                  remote: true,
+                  method: :get,
+                  id: 'friend-lookup-form' do %>
 
-      <div class='col-md-10'>
-        <%= text_field_tag  :search_param, 
-                            params[:search_param],
-                            placeholder: 'Enter name or email',
-                            autofocus: true,
-                            class: 'form-control search-box input-lg' %>
-      </div>
+        <div class = 'form-group row no-padding text-center col-md-12'>
 
-      <div class='col-md-2'>
-        <%= button_tag(type: :submit, class: 'btn btn-lg btn-success') do %>
-          <span class='glyphicon glyphicon-search'></span>
-        <% end %>
-      </div>
+          <div class='col-md-10'>
+            <%= text_field_tag  :search_param, 
+                                params[:search_param],
+                                placeholder: 'Enter name or email',
+                                autofocus: true,
+                                class: 'form-control search-box input-lg' %>
+          </div>
 
-    </div>
+          <div class='col-md-2'>
+            <%= button_tag(type: :submit, class: 'btn btn-lg btn-success') do %>
+              <span class='glyphicon glyphicon-search'></span>
+            <% end %>
+          </div>
 
-  <% end %>
+        </div>
+
+    <% end %>
+  </div>
+
+
+  <div id='friends-result'>
+    <%= render 'friends/result' %>
+  </div>
 
 </div> <!-- friend-lookup -->

@@ -15,8 +15,10 @@
  *= require_self
  */
 
-.results-block {
+/* .results-block {
   display: inline-block;
+  height: 100%;
+  margin: 100px;
 }
 
 .no-padding {
@@ -24,12 +26,12 @@
 }
 
 #stock-result {
-  height: 150px;
+  min-height: 150px;
 }
 
- #stock-list {
-   padding-top: 30px;
- }
+#stock-list {
+  padding-top: 30px;
+}
 
 .logout {
   padding-left: 0;
@@ -41,4 +43,4 @@
 
 .alert-wrapper {
   min-height: 60px;
-}
+} */

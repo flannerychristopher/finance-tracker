@@ -36,27 +36,39 @@ class User < ApplicationRecord
 
   def self.search(param)
     param.strip.downcase!
-    response = (first_name_matches(param) + last_name_matches(param) + email_matches(param)).uniq
-    response ? response : nil
+    response = (  first_name_matches(param) + 
+                  last_name_matches(param) + 
+                  email_matches(param)
+                ).uniq
+    response ? except_current_user(response) : nil
   end
 
-  def self.first_name_matches(param)
-    matches('first_name', param)
+  def not_friends_with?(friend)
+    friendships.where(friend_id: friend.id).count < 1
+    # false
   end
 
-  def self.last_name_matches(param)
-    matches('last_name', param)
-  end
+  private
 
-  def self.email_matches(param)
-    matches('email', param)
-  end
+    def self.except_current_user(users)
+      users.reject { |user| user.id == current_user.id }
+    end
 
-  def self.matches(field_name, param)
-    User.where("#{field_name} like?", "%#{param}%")
-  end
+    def self.first_name_matches(param)
+      matches('first_name', param)
+    end
 
-  private 
+    def self.last_name_matches(param)
+      matches('last_name', param)
+    end
+
+    def self.email_matches(param)
+      matches('email', param)
+    end
+
+    def self.matches(field_name, param)
+      User.where("#{field_name} like?", "%#{param}%")
+    end
 
     def stock_count
       user_stocks.where(user_id: current_user.id).count

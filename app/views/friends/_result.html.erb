@@ -1,0 +1,33 @@
+<div class='col-md-10'>
+  <% if params[:action] == 'search' %>
+    <div>
+      <%= bootstrap_flash %>
+    </div>
+  <% end %>
+
+  <% if @users %>
+    <div class='well'>
+      <% @users.each do |user| %>
+        <div>
+          <p>
+            <strong><%= user.full_name %></strong>, <%= user.email %>
+          
+              <%= link_to 'View Profile',   user_path(user), 
+                                            class: 'btn btn-xs btn-success pull-right' %>
+
+              <% if current_user.not_friends_with?(user) %>
+                <%= link_to 'Add Friend',     add_friend_path(user: current_user,
+                                                              friend: user),
+                                              method: :post,
+                                              class: 'btn btn-xs btn-primary pull-right' %>
+              <% else %>
+                <span class='btn btn-xs btn-warning pull-right'>
+                  Already Friends
+                </span>
+              <% end %>
+          </p>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
