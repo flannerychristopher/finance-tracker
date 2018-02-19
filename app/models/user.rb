@@ -34,6 +34,28 @@ class User < ApplicationRecord
     return true unless over_stock_limit? or stock_already_added?(ticker_symbol)
   end
 
+  def self.search(param)
+    param.strip.downcase!
+    response = (first_name_matches(param) + last_name_matches(param) + email_matches(param)).uniq
+    response ? response : nil
+  end
+
+  def self.first_name_matches(param)
+    matches('first_name', param)
+  end
+
+  def self.last_name_matches(param)
+    matches('last_name', param)
+  end
+
+  def self.email_matches(param)
+    matches('email', param)
+  end
+
+  def self.matches(field_name, param)
+    User.where("#{field_name} like?", "%#{param}%")
+  end
+
   private 
 
     def stock_count
